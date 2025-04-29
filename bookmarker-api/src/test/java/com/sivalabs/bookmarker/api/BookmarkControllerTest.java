@@ -3,8 +3,8 @@ package com.sivalabs.bookmarker.api;
 import com.sivalabs.bookmarker.domain.Bookmark;
 import com.sivalabs.bookmarker.domain.BookmarkRepository;
 import org.hamcrest.CoreMatchers;
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestPropertySource(properties = {
         "spring.datasource.url=jdbc:tc:postgresql:17-alpine:///demo"
 })
-class BookmarkControllerTest {
+public class BookmarkControllerTest {
     @Autowired
     private MockMvc mvc;
 
@@ -86,7 +86,7 @@ class BookmarkControllerTest {
     }
 
     @Test
-    void shouldCreateBookmarkSuccessfully() throws Exception {
+    public void shouldCreateBookmarkSuccessfully() throws Exception {
         this.mvc.perform(
             post("/api/bookmarks")
                     .contentType(MediaType.APPLICATION_JSON)
@@ -104,7 +104,7 @@ class BookmarkControllerTest {
     }
 
     @Test
-    void shouldFailToCreateBookmarkWhenUrlIsNotPresent() throws Exception {
+    public void shouldFailToCreateBookmarkWhenUrlIsNotPresent() throws Exception {
         this.mvc.perform(
                 post("/api/bookmarks")
                         .contentType(MediaType.APPLICATION_JSON)
